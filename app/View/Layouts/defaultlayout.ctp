@@ -66,7 +66,7 @@ echo $scripts_for_layout;
 			'HEADER-sm.jpg', 
 			array(
 				'class' => 'img-fluid',
-				'style' => 'height:180px;'
+				//'style' => 'height:180px;'
 			)
 		);
 		?>
