@@ -60,12 +60,13 @@ echo $scripts_for_layout;
 	<div class="container-fluid" style="min-height:8px;background:black;"></div>
 	<div class="container-fluid bg-black">
 		<div id="divGetPaidInvisibleLine" class="float-right" style="width:280px;height:0px;background:black;"></div>
-		<div class="w-100 py-3">
+		<div class="w-100 py-2">
 		<?php 
 		echo $this->Html->image(
 			'HEADER-sm.jpg', 
 			array(
-				'class' => 'img-fluid'
+				'class' => 'img-fluid',
+				'style' => 'height:180px;'
 			)
 		);
 		?>
@@ -443,7 +444,7 @@ echo $scripts_for_layout;
 		</div>
 
 	</div>
-	<div class="container-fluid px-2">
+	<div class="container-fluid px-2 bg-light">
 		<center>
 			<b><font color="red"><?php echo $this->Session->flash(); ?> </font> </b>
 		</center>
@@ -453,7 +454,7 @@ echo $scripts_for_layout;
 
 		</div>
 	</div>
-	<div class="container-fluid bg-black text-white">
+	<div class="container-fluid bg-dark text-white">
 		<center>
 			Alexanderplatz Gontard  Strasse 11  Berlin Deutschland EU 
 			Copyright &copy; 2020 All Rights, Reserved.<BR/>

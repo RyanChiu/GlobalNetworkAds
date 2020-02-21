@@ -24,7 +24,7 @@ echo $this->Form->create(
 ?>
 <table class='w-100'>
 <thead>
-<tr class="zBG-lessdark zTB-bordery">
+<tr class="totals zTB-bordery">
 	<th>
 		<div style="float:left;margin-right:50px;">
 		<input type="radio" name="viewby" id="viewbydate" style="width:10px;border:0px;"

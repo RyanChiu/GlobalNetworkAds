@@ -148,7 +148,7 @@ echo $this->Form->end();
 
 <div class="table-responsive">
 <table class="table-sm w-100">
-<thead class="bg-warning">
+<thead class="totals">
 <tr class="text-black">
 	<th class="text-center"><b><?php echo $this->ExPaginator->sort('ViewOnlineLog.username', 'Username', array('class' => 'text-reset')); ?></b></th>
 	<th class="text-center"><b><?php echo $this->ExPaginator->sort('ViewOnlineLog.inip', 'IP', array('class' => 'text-reset')); ?></b></th>

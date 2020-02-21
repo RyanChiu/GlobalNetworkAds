@@ -6,7 +6,7 @@
 
 <div class="table-responsive">
 <table class="table-sm table-striped w-100">
-<thead class="bg-warning">
+<thead class="totals">
 	<tr class="text-black">
 		<th><?php echo $this->ExPaginator->sort('ViewType.typename', 'Type Name', array('class' => 'text-reset')); ?></th>
 		<th><?php echo $this->ExPaginator->sort('ViewType.url', 'Type URL', array('class' => 'text-reset')); ?></th>

@@ -30,7 +30,7 @@ function __checkAll() {
 
 <div class="table-responsive">
 <table class="table-sm w-100">
-<thead class="bg-warning">
+<thead class="totals">
 <tr class="text-black">
 	<th><b>
 	<?php

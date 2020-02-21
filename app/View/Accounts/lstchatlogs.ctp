@@ -187,7 +187,7 @@ if (!empty($rs)) {
 ?>
 	<div class="table-responsive">
 	<table class="table-sm w-100">
-	<thead class="bg-warning">
+	<thead class="totals">
 	<tr class="text-black">
 		<th><b><?php echo $this->ExPaginator->sort('ViewChatLog.officename', 'Team', array('class' => 'text-reset')); ?></b></th>
 		<th><b><?php echo $this->ExPaginator->sort('ViewChatLog.username4m', 'Seller', array('class' => 'text-reset')); ?></b></th>

@@ -222,7 +222,7 @@ if (in_array($userinfo['role'], array(0, 1))) {//means an administrator or an of
 
 <div class="table-responsive">
 <table class="table-sm w-100">
-<thead class="bg-warning">
+<thead class="totals">
 <tr class="text-black">
 	<th class="text-black"><b>
 	<?php

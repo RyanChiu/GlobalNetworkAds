@@ -16,7 +16,7 @@ $userinfo = $this->Session->read('Auth.User.Account');
 </table>
 <div class="table-responsive">
 <table class="table-sm table-striped w-100">
-	<thead class="bg-warning">
+	<thead class="totals">
 	<tr class="text-black">
 		<th><?php echo $this->ExPaginator->sort('ViewSite.hostname', 'Campaigns', array('class' => 'text-reset')) . '<br/><font size="1">(for admin only)</font>'; ?></th>
 		<th><?php echo $this->ExPaginator->sort('ViewSite.sitename', 'Site Name', array('class' => 'text-reset')) . '<br/><font size="1">(for team or seller)</font>'; ?></th>

@@ -118,7 +118,7 @@ if (!empty($rs)) {
 <div class="table-responsive">
 <table class="table-condensed table-bordered w-100 mb-1">
 	<thead class="text-black">
-	<tr class="bg-warning">
+	<tr class="totals">
 		<th>#<!-- numbered --></th>
 		<?php
 		switch ($bywhat) {
