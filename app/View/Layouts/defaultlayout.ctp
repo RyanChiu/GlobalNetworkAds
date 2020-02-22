@@ -458,7 +458,7 @@ echo $scripts_for_layout;
 		<center>
 			Alexanderplatz Gontard  Strasse 11  Berlin Deutschland EU 
 			Copyright &copy; 2020 All Rights, Reserved.<BR/>
-			<a href="Https://www.GlobalNetworkAds.com/GNA">Https://www.GlobalNetworkAds.com</a> 
+			<a href="Https://www.GlobalNetworkAds.com">Https://www.GlobalNetworkAds.com</a> 
 			<br/>
 		</center>
 	</div>
