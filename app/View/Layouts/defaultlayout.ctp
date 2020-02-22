@@ -58,9 +58,9 @@ echo $scripts_for_layout;
 <div class="container-fluid bg-black p-0 zMaxWidth">
 	<div class="container-fluid bg-black" style="min-height:18px;"></div>
 	<div class="container-fluid" style="min-height:8px;background:black;"></div>
-	<div class="container-fluid bg-black">
+	<div class="container-fluid bg-black p-0">
 		<div id="divGetPaidInvisibleLine" class="float-right" style="width:280px;height:0px;background:black;"></div>
-		<div class="w-100 py-2">
+		<div class="w-100">
 		<?php 
 		echo $this->Html->image(
 			'HEADER-sm.jpg', 
@@ -458,7 +458,7 @@ echo $scripts_for_layout;
 		<center>
 			Alexanderplatz Gontard  Strasse 11  Berlin Deutschland EU 
 			Copyright &copy; 2020 All Rights, Reserved.<BR/>
-			<a href="Https://www.GlobalNetworkAds.com">Https://www.GlobalNetworkAds.com</a> 
+			<a href="Https://www.GlobalNetworkAds.com/GNA">Https://www.GlobalNetworkAds.com</a> 
 			<br/>
 		</center>
 	</div>
