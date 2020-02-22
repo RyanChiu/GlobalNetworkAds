@@ -519,9 +519,9 @@ echo $scripts_for_layout;
 				YOUR
 				<?php echo '"' . implode("\", \"", $excludedsites) . '"'; ?>
 				LINKS HAVE BEEN SUSPENDED, PLEASE CONTACT <a
-					href="mailto:SUPPORT@ExtremeNorthAdvertising.com"><font color="red">THE 
+					href="mailto:SUPPORT@globalnetworkads.com"><font color="red">THE 
 						GLOBALNETADVERTISING SUPPORT</font> </a> FOR MORE INFO.<br /> <a
-					href="mailto:SUPPORT@ExtremeNorthAdvertising.com"><font color="red">SUPPORT@ExtremeNorthAdvertising.com</font>
+					href="mailto:SUPPORT@globalnetworkads.com"><font color="red">SUPPORT@GlobalNetworkAds.com</font>
 				</a>
 			</p>
 			<div style="margin: 12px 2px 2px 2px; font-weight: bolder;">REASONS
