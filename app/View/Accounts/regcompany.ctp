@@ -17,7 +17,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.officename', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.officename', array('label' => '', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
@@ -31,7 +31,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.man1stname', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.man1stname', array('label' => '', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
@@ -42,29 +42,29 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.manlastname', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.manlastname', array('label' => '', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">Email : <font color="red">*</font></td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.manemail', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.manemail', array('label' => '', 'value' => 'gna@gna.us', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">Skype / Telegram : <font color="red">*</font></td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.skypetelegram', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.skypetelegram', array('label' => '', 'value' => 'N/A', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
@@ -75,7 +75,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Account.username', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Account.username', array('label' => '', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
@@ -86,7 +86,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Account.password', array('label' => '', 'style' => 'width:200px;', 'type' => 'password'));
+		echo $this->Form->input('Account.password', array('label' => '', 'style' => 'width:300px;', 'type' => 'password'));
 		?>
 		</div>
 		
@@ -97,58 +97,58 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Account.originalpwd', array('label' => '', 'style' => 'width:200px;', 'type' => 'password'));
+		echo $this->Form->input('Account.originalpwd', array('label' => '', 'style' => 'width:300px;', 'type' => 'password'));
 		?>
 		</div>
 		
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">Bank Name BDO : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.banknamebdo', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.banknamebdo', array('label' => '', 'value' => 'N/A', 'style' => 'width:300px;'));
 		?>
 		</div>
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">Account Name : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.bankaccount', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.bankaccount', array('label' => '', 'value' => 'N/A', 'style' => 'width:300px;'));
 		?>
 		</div>
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">Account # : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.banknum', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.banknum', array('label' => '', 'value' => 'N/A', 'style' => 'width:300px;'));
 		?>
 		</div>
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">SWIFT Code : <font color="red">*</font></td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.swiftcode', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.swiftcode', array('label' => '', 'value' => 'N/A', 'style' => 'width:300px;'));
 		?>
 		</div>
 		
 		</td>
 	</tr>
-	<tr>
+	<tr class="d-none">
 		<td class="search-label">Routing # : </td>
 		<td>
 		<?php
-		echo $this->Form->input('Company.routingnum', array('label' => '', 'style' => 'width:200px;'));
+		echo $this->Form->input('Company.routingnum', array('label' => '', 'value' => 'N/A', 'style' => 'width:300px;'));
 		?>
 		</td>
 	</tr>
