@@ -1,3 +1,7 @@
+<?php
+$userinfo = $this->Session->read('Auth.User.Account');
+?>
+
 <table class="table table-sm table-borderless font-weight-bold p-0 mb-1">
 	<tr><td>
 	Host Name:<?php if (!empty($rs)) echo $rs[0]['ViewType']['hostname']; ?>
@@ -11,7 +15,13 @@
 		<th><?php echo $this->ExPaginator->sort('ViewType.typename', 'Type Name', array('class' => 'text-reset')); ?></th>
 		<th><?php echo $this->ExPaginator->sort('ViewType.url', 'Type URL', array('class' => 'text-reset')); ?></th>
 		<th><?php echo $this->ExPaginator->sort('ViewType.price', 'Payout', array('class' => 'text-reset')); ?></th>
+		<?php
+		if ($userinfo['role'] == 0 && in_array($userinfo['id'], [1,2])) { //hard code: only allow admin whoes id is in the array 
+		?>
 		<th><?php echo $this->ExPaginator->sort('ViewType.earning', 'Earning', array('class' => 'text-reset')); ?></th>
+		<?php
+		}
+		?>
 		<th>Start</th>
 		<th>End</th>
 		<th><?php echo $this->ExPaginator->sort('ViewType.status', 'Status', array('class' => 'text-reset')); ?></th>
@@ -37,7 +47,13 @@
 		<td align="center"><?php echo $r['ViewType']['typename']; ?></td>
 		<td align="center"><?php echo $r['ViewType']['url']; ?></td>
 		<td align="center"><?php echo $price; ?></td>
+		<?php
+		if ($userinfo['role'] == 0 && in_array($userinfo['id'], [1,2])) { //hard code: only allow admin whoes id is in the array
+		?>
 		<td align="center"><?php echo $earning; ?></td>
+		<?php
+		}
+		?>
 		<td align="center"><?php echo $r['ViewType']['start']; ?></td>
 		<td align="center"><?php echo $r['ViewType']['end']; ?></td>
 		<td align="center"><?php echo $r['ViewType']['status'] == 0 ? 'Suspended' : 'Activated'; ?></td>

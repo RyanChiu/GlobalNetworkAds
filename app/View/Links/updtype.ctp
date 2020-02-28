@@ -55,6 +55,9 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
+	<?php
+	if ($userinfo['role'] == 0 && in_array($userinfo['id'], [1,2])) { //hard code: only allow admin whoes id is in the array 
+	?>
 	<tr>
 		<td width="15%">Earning($):</td>
 		<td>
@@ -66,6 +69,9 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
+	<?php
+	}
+	?>
 	<tr>
 		<td width="15%">Start From:</td>
 		<td>

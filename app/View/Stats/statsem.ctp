@@ -50,8 +50,8 @@ $userinfo = $this->Session->read('Auth.User.Account');
 ?>
 
 <?php
-// $_show_pay_ = ($userinfo['role'] == 0 && in_array($userinfo['id'], array(1, 2, 3)));
-$_show_pay_ = ($userinfo['role'] == 0);
+$_show_pay_ = ($userinfo['role'] == 0 && in_array($userinfo['id'], [1, 2]));
+// $_show_pay_ = ($userinfo['role'] == 0);
 if (!empty($rs)) {
 ?>
 <div>
