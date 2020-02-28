@@ -209,11 +209,11 @@ function __checkAll() {
 <?php
 if (in_array($userinfo['role'], array(0, 1))) {//means an administrator or an office
 	//echo $this->Form->button($userinfo['role'] == 0 ? 'Add Agent' : 'Request New Agent',
-	echo $this->Form->button('Add Seller...',
+	echo $this->Form->button('ADD SELLER...',
 		array(
 			'onclick' => 'javascript:location.href=\'' .
 				$this->Html->url(array('controller' => 'accounts', 'action' => 'regagent')) . '\'',
-			'class' => 'btn btn-link'
+			'class' => 'btn btn-link font-weight-bold text-danger'
 		)
 	);
 }

@@ -102,11 +102,11 @@ function __checkAll() {
 
 <div style="margin-bottom:3px">
 <?php
-echo $this->Form->button('Add Team...',
+echo $this->Form->button('ADD TEAM...',
 	array(
 		'onclick' => 'javascript:location.href=\''
 			. $this->Html->url(array('controller' => 'accounts', 'action' => 'regcompany')) . '\'',
-		'class' => 'btn btn-link'
+		'class' => 'btn btn-link font-weight-bold text-danger'
 	)
 );
 ?>
