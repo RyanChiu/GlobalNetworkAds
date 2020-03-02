@@ -129,12 +129,16 @@ echo $scripts_for_layout;
 						false
 					);
 				}
+				if ($newCounts != 0) {
 				?>
 				<span id="spanNewStaff" class="badge badge-danger float-left">
 				<?php
 				echo $newCounts;
 				?>
 				</span>
+				<?php
+				}
+				?>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link text-white font-weight-bold dropdown-toggle" 
@@ -594,6 +598,9 @@ echo $scripts_for_layout;
 			});
 
 			/* blink the badge of the "new staff" numbers */
+			<?php
+			if ($newCounts != 0) {
+			?>
 			function blink(selector){
 				jQuery(selector).fadeOut(1200, function(){
 					jQuery(this).fadeIn(1200, function(){
@@ -602,6 +609,9 @@ echo $scripts_for_layout;
 				});
 			}
 			blink("#spanNewStaff");
+			<?php
+			}
+			?>
 		});
 	</script>
 
