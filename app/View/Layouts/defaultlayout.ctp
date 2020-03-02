@@ -367,7 +367,7 @@ echo $scripts_for_layout;
 				echo $title_for_page;
 				?>
 			</div>
-			<div class="rounded-pill d-inline-flex bg-secondary text-left text-white font-weight-bold px-2 pb-1">
+			<div class="badge badge-secondary d-inline-flex text-left text-white font-weight-bold p-1">
 				<div class="text-left"><i class="icon-user"></i></div><?php echo '&nbsp' . $userinfo['username'];?>
 			</div>
 		</div>
