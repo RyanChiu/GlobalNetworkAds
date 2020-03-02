@@ -129,7 +129,7 @@ echo $this->Form->button('ADD TEAM...',
 	<th><b><?php echo $this->ExPaginator->sort('ViewCompany.agenttotal', 'Tot Sellers', array('class' => 'text-reset')); ?></b></th>
 	<th><b><?php echo $this->ExPaginator->sort('ViewCompany.username4m', 'User', array('class' => 'text-reset')); ?></b></th>
 	<th><b><?php echo $this->ExPaginator->sort('ViewCompany.originalpwd', 'Pass', array('class' => 'text-reset')); ?></b></th>
-	<th><b><?php echo $this->ExPaginator->sort('ViewCompany.manemail', 'Email', array('class' => 'text-reset')); ?></b></th>
+	<!-- <th><b><?php echo $this->ExPaginator->sort('ViewCompany.manemail', 'Email', array('class' => 'text-reset')); ?></b></th> -->
 	<th><b><?php echo $this->ExPaginator->sort('ViewCompany.regtime', 'Created', array('class' => 'text-reset')); ?></b></th>
 	<th><b><?php echo $this->ExPaginator->sort('ViewCompany.status', 'Status', array('class' => 'text-reset')); ?></b></th>
 	<th><b>Action</b></th>
@@ -174,7 +174,7 @@ foreach ($rs as $r):
 	</td>
 	<td><?php echo $r['ViewCompany']['username']; ?></td>
 	<td><?php echo $r['ViewCompany']['originalpwd']; ?></td>
-	<td><?php echo $r['ViewCompany']['manemail']; ?></td>
+	<!--- <td><?php echo $r['ViewCompany']['manemail']; ?></td> -->
 	<td><?php echo $r['ViewCompany']['regtime']; ?></td>
 	<td><?php echo $status[$r['ViewCompany']['status']]; ?></td>
 	<td align="center">
