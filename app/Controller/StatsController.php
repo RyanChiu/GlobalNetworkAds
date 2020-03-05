@@ -528,7 +528,7 @@ class StatsController extends AppController {
 						. $where . $groupby;
 					$result = mysql_query($sql, $conn->dblink);
 					
-					//$this->Session->setFlash($sql);//for debug
+					//$this->Session->setFlash($sql . "~2020~" . mysql_error());//for debug
 					
 					$this->Session->write('conditions_stats',
 						array(
@@ -622,7 +622,7 @@ class StatsController extends AppController {
 				. $where . $groupby;
 			$result = mysql_query($sql, $conn->dblink);
 			
-			//$this->Session->setFlash($sql);//for debug
+			//$this->Session->setFlash($sql . "~2020~" . mysql_error());//for debug
 			
 			$startdate = $this->request->data['Stats']['startdate'];
 			$enddate = $this->request->data['Stats']['enddate'];
