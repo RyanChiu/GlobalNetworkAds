@@ -108,7 +108,7 @@ echo $this->Form->create(
 		<div class="float-left bg-transparent" style="width:120px;">
 			<b>Link Type:</b>
 		</div>
-		<div class="float-left" style="margin-right:20px;">
+		<div class="float-left">
 		<?php
 		echo $this->Form->input('Stats.typeid',
 			array('label' => '', 'options' => $types,
@@ -119,8 +119,10 @@ echo $this->Form->create(
 		);
 		?>
 		</div>
-		<div id="divTypeidLoading" style="float:left;width:160px;margin-right:20px;display:none;">
-		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
+		<div id="divTypeidLoading" style="float:left;width:160px;display:none;">
+		<?php //echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
+			<div class="spinner-border text-primary float-left ml-1" style="height:18px;width:18px;" role="status"></div>
+			<div class="float-left">&nbsp;Loading...</div>
 		</div>
 	</td>
 </tr>
@@ -224,7 +226,7 @@ echo $this->Form->create(
 		<div style="width:120px;" class="float-left bg-transparent">
 			<b>Seller:</b>
 		</div>
-		<div style="margin-right:20px;" class="float-left">
+		<div class="float-left">
 		<?php
 			echo $this->Form->input('Stats.agentid',
 				array('label' => '',
@@ -235,8 +237,10 @@ echo $this->Form->create(
 			);
 		?>
 		</div>
-		<div id="divAgentidLoading" style="float:left;width:158px;margin-right:20px;display:none;">
-		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
+		<div id="divAgentidLoading" style="float:left;width:158px;display:none;">
+			<?php //echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
+			<div class="spinner-border text-primary float-left ml-1" style="height:18px;width:18px;" role="status"></div>
+			<div class="float-left">&nbsp;Loading...</div>
 		</div>
 		<?php
 		}
