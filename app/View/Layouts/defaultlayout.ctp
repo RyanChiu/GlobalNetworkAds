@@ -168,7 +168,8 @@ echo $scripts_for_layout;
 			<li class="nav-item">
 				<?php
 				echo $this->Html->link('STATS',
-					array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
+					//array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
+					array('controller' => 'stats', 'action' => 'statsdate', 'clear' => -2),
 					array('id' => 'navbarStats', 'class' => 'nav-link text-white font-weight-bold', 'escape' => false),
 					false
 				);
