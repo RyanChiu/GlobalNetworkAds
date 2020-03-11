@@ -41,14 +41,17 @@ if (!empty($notes)) {
 
 <!-- show the top selling list -->
 <?php
-if (false) {
+if (true) {
 ?>
 <br/>
+<div><font size="5" color="#bb2222">Best sellers</font></div>
 <table style="width:100%">
-<caption><font size="5" color="#bb2222">Best sellers</font></caption>
 <tr>
 	<td colspan=2>
-	<div style="float: right;">
+		<div class="float-left">
+		(From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
+		</div>
+		<!-- <div style="float: right;">
 		<?php
 		if ($userinfo['role'] == 0) {
 			echo $this->Html->link('<font size="1">Choose another pay period or another month</font>',
@@ -58,103 +61,98 @@ if (false) {
 			);
 		}
 		?>
+		</div> -->
+	</td>
+</tr>
+<tr>
+	<td width="50%">
+		<div style="font-style:italic;">
+		<font style="font-weight:bold;color:red;">WEEKLY TOP 10 AGENTS</font>		
+		</div>
+		<div class="table-responsive">
+		<table class="table-condensed table-bordered w-100 mb-1">
+		<thead>
+		<tr class="totals text-center">
+			<th>Rank</th>
+			<th>Office</th>
+			<th>Agent</th>
+			<th>Sales</th>
+		</tr>
+		</thead>
+		<?php
+		$i = 0;//debug($weekrs);debug($rs);
+		if (!empty($weekrs)) {
+			foreach ($weekrs as $r) {
+				$i++;
+		?>
+			<tr>
+				<td align="center"><?php echo $i; ?></td>
+				<td align="center" style="font-size:8pt;">
+					<?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?>
+				</td>
+				<td align="center">
+					<font style="font-size: 9pt;"><?php echo $r['Top10']['username']; ?></font>
+					<font style="font-size: 10pt;"> (<?php echo $r['Top10']['ag1stname'] ?>)</font>
+				</td>
+				<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
+			</tr>
+		<?php
+			}
+		}
+		?>
+		</table>
+		</div>
+	</td>
+	<td>
+		<div style="font-style:italic;">
+		<font style="font-weight:bold;color:red;">WEEKLY TOP 10 OFFICES</font>	
+		</div>
+		<div class="table-responsive">
+		<table class="table-condensed table-bordered w-100 mb-1">
+		<thead>
+		<tr class="totals text-center">
+			<th>Rank</th>
+			<th>Office</th>
+			<th>Sales</th>
+		</tr>
+		</thead>
+		<?php
+		$i = 0;
+		if (!empty($weekrs_offi)) {
+			foreach ($weekrs_offi as $r) {
+				$i++;
+		?>
+			<tr>
+				<td align="center"><?php echo $i; ?></td>
+				<td align="center" style="font-size:8pt;">
+					<?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?>
+				</td>
+				<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
+			</tr>
+		<?php
+			}
+		}
+		?>
+		</table>
 		</div>
 	</td>
 </tr>
 <tr>
-	<td>
-		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">
-		This Week (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
-		</caption>
-		<thead>
-		<tr>
-			<th>Rank</th>
-			<th>Office</th>
-			<th>Agent</th>
-			<th>Sales</th>
-		</tr>
-		</thead>
-		<?php
-		$i = 0;
-		foreach ($weekrs as $r) {
-			$i++;
-		?>
-		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
-			<td align="center"><?php echo $i; ?></td>
-			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
-			<td align="center">
-				<font style="font-size: 9pt;">
-				<?php
-				echo $r['Top10']['sales'] > 0 ? $r['Top10']['username'] : $r['Top10']['username'];
-				?>
-				</font>
-				<font style="font-size: 10pt;">(
-				<?php
-				//$showname = $r['Top10']['ag1stname'] . " " . $r['Top10']['aglastname'];
-				$showname = $r['Top10']['ag1stname'];
-				echo strlen($showname) > 20 ? (substr($showname, 0, 17) . "...") : $showname;
-				?>
-				)</font>
-			</td>
-			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
-		</tr>
-		<?php
-		}
-		?>
-		</table>
+	<td colspan=2>
+	<div class="float-left">
+	(Start from 2016-08-14)
+	</div>
 	</td>
-	<!--  
-	<td>
-		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">
-		This Month (From <?php echo $monthstart; ?> To <?php echo $monthend; ?>)		
-		</caption>
-		<thead>
-		<tr>
-			<th>Rank</th>
-			<th>Office</th>
-			<th>Agent</th>
-			<th>Sales</th>
-		</tr>
-		</thead>
-		<?php
-		$i = 0;
-		foreach ($monthrs as $r) {
-			$i++;
-		?>
-		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
-			<td align="center"><?php echo $i; ?></td>
-			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
-			<td align="center">
-				<font style="font-size: 9pt;">
-				<?php
-				echo $r['Top10']['sales'] > 0 ? $r['Top10']['username'] : $r['Top10']['username'];
-				?>
-				</font>
-				<font style="font-size: 10pt;">(
-				<?php
-				//$showname = $r['Top10']['ag1stname'] . " " . $r['Top10']['aglastname'];
-				$showname = $r['Top10']['ag1stname'];
-				echo strlen($showname) > 20 ? (substr($showname, 0, 17) . "...") : $showname;
-				?>
-				)</font>
-			</td>
-			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
-		</tr>
-		<?php
-		}
-		?>
-		</table>
-	</td>
-	-->
 </tr>
 <tr>
-	<td>
-		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">All the time (Start from 2016-08-14)</caption>
+	<td width="50%">
+		<div style="font-style:italic;">
+			<font style="font-weight:bold;color:#0066dd;">ALL THE TIME</font>
+		</div>
+		<div class="table-responsive">
+		<table class="table-condensed table-bordered w-100 mb-1">
 		<thead>
-		<tr>
+		<tr class="totals text-center">
 			<th>Rank</th>
 			<th>Office</th>
 			<th>Agent</th>
@@ -189,6 +187,45 @@ if (false) {
 		}
 		?>
 		</table>
+		</div>
+	</td>
+	<td>
+		<div style="font-style:italic;">
+		<font style="font-weight:bold;color:#0066dd;">ALL TIME TOP 10 AGENTS</font>
+		</div>
+		<div class="table-responsive">
+		<table class="table-condensed table-bordered w-100 mb-1">
+		<thead>
+		<tr class="totals text-center">
+			<th>Rank</th>
+			<th>Office</th>
+			<th>Agent</th>
+			<th>Sales</th>
+		</tr>
+		</thead>
+		<?php
+		$i = 0;
+		if (!empty($rs)) {
+			foreach ($rs as $r) {
+				$i++;
+		?>
+			<tr>
+				<td align="center"><?php echo $i; ?></td>
+				<td align="center" style="font-size:8pt;">
+					<?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?>
+				</td>
+				<td align="center">
+					<font style="font-size: 9pt;"><?php echo $r['Top10']['username']; ?></font>
+					<font style="font-size: 10pt;"> (<?php echo $r['Top10']['ag1stname'] ?>)</font>
+				</td>
+				<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
+			</tr>
+		<?php
+			}
+		}
+		?>
+		</table>
+		</div>
 	</td>
 </tr>
 </table>

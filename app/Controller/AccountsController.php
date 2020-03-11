@@ -429,6 +429,12 @@ class AccountsController extends AppController {
 				'order' => 'sales desc'
 			)
 		);
+		$weekrs_offi = $this->Top10->find('all',
+			array(
+				'conditions' => array('flag' => 3),
+				'order' => 'sales desc'
+			)
+		);
 		$conds['startdate'] = $monthstart;
 		$conds['enddate'] = $monthend;
 		$monthrs = $this->Top10->find('all',
@@ -438,6 +444,7 @@ class AccountsController extends AppController {
 			)
 		);
 		$this->set(compact('weekrs'));
+		$this->set(compact('weekrs_offi'));
 		$this->set(compact('weekstart'));
 		$this->set(compact('weekend'));
 		$this->set(compact('monthrs'));
