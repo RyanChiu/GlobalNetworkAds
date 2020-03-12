@@ -144,6 +144,7 @@ if (true) {
 	</div>
 	</td>
 </tr>
+<!--
 <tr>
 	<td width="50%">
 		<div style="font-style:italic;">
@@ -228,6 +229,7 @@ if (true) {
 		</div>
 	</td>
 </tr>
+-->
 </table>
 <?php
 }
