@@ -69,10 +69,10 @@ if (true) {
 		<div style="font-style:italic;">
 		<font style="font-weight:bold;color:red;">WEEKLY TOP 10 AGENTS</font>		
 		</div>
-		<div class="table-responsive">
+		<div class="table-responsive pr-3">
 		<table class="table-condensed table-bordered w-100 mb-1">
 		<thead>
-		<tr class="totals text-center">
+		<tr class="totals text-left">
 			<th>Rank</th>
 			<th>Office</th>
 			<th>Agent</th>
@@ -85,16 +85,16 @@ if (true) {
 			foreach ($weekrs as $r) {
 				$i++;
 		?>
-			<tr>
-				<td align="center"><?php echo $i; ?></td>
-				<td align="center" style="font-size:8pt;">
+			<tr class="text-left">
+				<td><?php echo $i; ?></td>
+				<td style="font-size:8pt;">
 					<?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?>
 				</td>
-				<td align="center">
+				<td>
 					<font style="font-size: 9pt;"><?php echo $r['Top10']['username']; ?></font>
 					<font style="font-size: 10pt;"> (<?php echo $r['Top10']['ag1stname'] ?>)</font>
 				</td>
-				<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
+				<td><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
 			</tr>
 		<?php
 			}
@@ -104,13 +104,13 @@ if (true) {
 		</div>
 	</td>
 	<td>
-		<div style="font-style:italic;">
-		<font style="font-weight:bold;color:red;">WEEKLY TOP 10 OFFICES</font>	
+		<div class="pl-3" style="font-style:italic;">
+		<font style="font-weight:bold;color:red;">WEEKLY SALES PER OFFICE</font>	
 		</div>
-		<div class="table-responsive">
+		<div class="table-responsive pl-3">
 		<table class="table-condensed table-bordered w-100 mb-1">
 		<thead>
-		<tr class="totals text-center">
+		<tr class="totals text-left">
 			<th>Rank</th>
 			<th>Office</th>
 			<th>Sales</th>
@@ -122,12 +122,12 @@ if (true) {
 			foreach ($weekrs_offi as $r) {
 				$i++;
 		?>
-			<tr>
-				<td align="center"><?php echo $i; ?></td>
-				<td align="center" style="font-size:8pt;">
+			<tr class="text-left">
+				<td><?php echo $i; ?></td>
+				<td style="font-size:8pt;">
 					<?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?>
 				</td>
-				<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
+				<td><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
 			</tr>
 		<?php
 			}
@@ -137,6 +137,7 @@ if (true) {
 		</div>
 	</td>
 </tr>
+<!--
 <tr>
 	<td colspan=2>
 	<div class="float-left">
@@ -144,7 +145,6 @@ if (true) {
 	</div>
 	</td>
 </tr>
-<!--
 <tr>
 	<td width="50%">
 		<div style="font-style:italic;">
