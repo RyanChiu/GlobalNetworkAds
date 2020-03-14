@@ -8,6 +8,8 @@
 	 */
 	define("CST_CHS", "21");
 	define("LCS_CHS", "22");
+	define("CMH_CHS", "23");
+	define("MCS_CHS", "24");
 	//define("HPC_CHS", "4,5");
 	//define("IINDS_CHS", "6,7");
 	//define("MAXI_CHS", "8,9,10,11");
