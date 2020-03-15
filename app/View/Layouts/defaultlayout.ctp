@@ -365,6 +365,8 @@ echo $scripts_for_layout;
 					$title_for_page = "Update Type";
 				} else if (strpos($this->request->here, 'stats') !== false) {
 					$title_for_page = "Stats";
+				} else if (strpos($this->request->here, 'top10') !== false) {
+					$title_for_page = "Top Sales";
 				} else {
 					$title_for_page = "HOME";
 				}

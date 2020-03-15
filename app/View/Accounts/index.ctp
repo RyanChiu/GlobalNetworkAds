@@ -51,17 +51,17 @@ if (true) {
 		<div class="float-left">
 		(From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
 		</div>
-		<!-- <div style="float: right;">
+		<div style="float: right;">
 		<?php
 		if ($userinfo['role'] == 0) {
-			echo $this->Html->link('<font size="1">Choose another pay period or another month</font>',
+			echo $this->Html->link('<font size="2">Choose another pay period or another month</font>',
 				array('controller' => 'accounts', 'action' => 'top10'),
 				array('escape' => false),
 				false
 			);
 		}
 		?>
-		</div> -->
+		</div>
 	</td>
 </tr>
 <tr>

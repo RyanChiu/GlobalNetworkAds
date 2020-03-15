@@ -231,7 +231,7 @@ class AccountsController extends AppController {
 					'convert(trxtime, date) >=' => $conds['startdate'],
 					'typeid' => $tps,
 					'agentid >' => '0',//avoid those data that don't belog to any agent
-					'companyid !=' => '98'//don't show office "TESTING"'s sales
+					//'companyid !=' => '98'//don't show office "TESTING"'s sales
 				),
 				'group' => array('agentid'),
 				'order' => array('sales desc'),
