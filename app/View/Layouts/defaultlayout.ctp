@@ -128,15 +128,13 @@ echo $scripts_for_layout;
 						array('class' => 'nav-link text-white font-weight-bold float-left', 'escape' => false),
 						false
 					);
-				}
-				if ($newCounts != 0) {
+					if ($newCounts != 0) {
 				?>
-				<span id="spanNewStaff" class="badge badge-danger float-left">
+					<span id="spanNewStaff" class="badge badge-danger float-left">
+						<?php echo $newCounts;?>
+					</span>
 				<?php
-				echo $newCounts;
-				?>
-				</span>
-				<?php
+					}
 				}
 				?>
 			</li>
