@@ -43,7 +43,7 @@ class AccountsController extends AppController {
 
 	function beforeFilter() {
 		//Configure::write('debug', 2);
-		$this->set('title_for_layout', 'The GlobalNetworkAds.com');
+		$this->set('title_for_layout', 'The WeFeedPinoy.com');
 		//$this->Auth->authenticate = ClassRegistry::init('Account');
 		//$this->Auth->userModel = 'Account'; 
 		//$this->Auth->loginAction = array('controller' => 'accounts', 'action' => 'login');
@@ -143,16 +143,16 @@ class AccountsController extends AppController {
 	
 	var $emailErr = "not filled.";
 	function __sendemail($subject = 'empty', $content = 'empty',
-		$from = 'SUPPORT@GlobalNetworkAds.com',
-		$mailto = 'SUPPORT@GlobalNetworkAds.com',
-		$replyto = 'SUPPORT@GlobalNetworkAds.com') {
+		$from = 'SUPPORT@WeFeedPinoy.com',
+		$mailto = 'SUPPORT@WeFeedPinoy.com',
+		$replyto = 'SUPPORT@WeFeedPinoy.com') {
 		App::uses('CakeEmail', 'Network/Email');
 		$cakeEmail = new CakeEmail(
 			array(
 				'port'=>'25',
 				'timeout'=>'60',
 				'host' => 'smtpout.asia.secureserver.net',
-				'username'=>'SUPPORT@GlobalNetworkAds.com',
+				'username'=>'SUPPORT@WeFeedPinoy.com',
 				'password'=>'NCC123',
 				'transport' => 'Smtp'
 			)
@@ -175,7 +175,7 @@ class AccountsController extends AppController {
 			'port'=>'25',
 			'timeout'=>'60',
 			'host' => 'smtpout.asia.secureserver.net',
-			'username'=>'SUPPORT@GlobalNetworkAds.com',
+			'username'=>'SUPPORT@WeFeedPinoy.com',
 			'password'=>'NCC123.'
 		);
 		$this->Email->from = '<' . $from . '>';
@@ -746,10 +746,10 @@ class AccountsController extends AppController {
 					 * then we can use the email logic send the password with $_r['Company']['manemail']
 					 */
 					$issent = $this->__sendemail(
-						'Your The GlobalNetworkAds Password',
-						"Hi,\nYour The GlobalNetworkAds password is:" . $r['Account']['originalpwd'] . "\n"
-						. "\nThanks,\nThe GlobalNetworkAds webmaster.",//must use " instead of ' at this $content parameter
-						'SUPPORT@GlobalNetworkAds.com',
+						'Your The WeFeedPinoy Password',
+						"Hi,\nYour The WeFeedPinoy password is:" . $r['Account']['originalpwd'] . "\n"
+						. "\nThanks,\nThe WeFeedPinoy webmaster.",//must use " instead of ' at this $content parameter
+						'SUPPORT@WeFeedPinoy.com',
 						$_r['Company']['manemail']
 					);
 					if ($issent) {
@@ -779,10 +779,10 @@ class AccountsController extends AppController {
 					 * then we can use the email logic send the password with $_r['Agent']['email']
 					 */
 					$issent = $this->__sendemail(
-						'Your The GlobalNetworkAds Password',
-						"Hi,\nYour The GlobalNetworkAds password is:" . $r['Account']['originalpwd'] . "\n"
-						. "\nThanks,\nThe GlobalNetworkAds webmaster.",//must use " instead of ' at this $content parameter
-						'SUPPORT@GlobalNetworkAds.com',
+						'Your The WeFeedPinoy Password',
+						"Hi,\nYour The WeFeedPinoy password is:" . $r['Account']['originalpwd'] . "\n"
+						. "\nThanks,\nThe WeFeedPinoy webmaster.",//must use " instead of ' at this $content parameter
+						'SUPPORT@WeFeedPinoy.com',
 						$_r['Agent']['email']
 					);
 					if ($issent) {
@@ -816,8 +816,8 @@ class AccountsController extends AppController {
 			$issent = $this->__sendemail(
 				"[User name: " . $this->request->data['FakeContactUs']['username'] . "] " . $this->request->data['FakeContactUs']['subject'],
 				"From:" . $this->request->data['FakeContactUs']['email'] . "\n\n" . $this->request->data['FakeContactUs']['message'],
-				"SUPPORT@GlobalNetworkAds.com",
-				"SUPPORT@GlobalNetworkAds.com",
+				"SUPPORT@WeFeedPinoy.com",
+				"SUPPORT@WeFeedPinoy.com",
 				$this->request->data['FakeContactUs']['email']
 			);
 			$redirecturl = '';
@@ -1043,8 +1043,8 @@ class AccountsController extends AppController {
 						. $this->request->data['Account']['username']
 						. "' created, please check it out.",
 						"empty",
-						"SUPPORT@GlobalNetworkAds.com",
-						"NOREPLY@GlobalNetworkAds.com"
+						"SUPPORT@WeFeedPinoy.com",
+						"NOREPLY@WeFeedPinoy.com"
 					);
 					*/
 
@@ -1222,8 +1222,8 @@ class AccountsController extends AppController {
 							. $this->request->data['Account']['username'] 
 							. "' created, please check it out.",
 						"empty",
-						"SUPPORT@GlobalNetworkAds.com",
-						"NOREPLY@GlobalNetworkAds.com"
+						"SUPPORT@WeFeedPinoy.com",
+						"NOREPLY@WeFeedPinoy.com"
 					);
 					*/
 					
@@ -2015,12 +2015,12 @@ class AccountsController extends AppController {
 						$subject = "Request For New Seller";
 						$content .= "\n\n(Request from team manager \"" . $data['Requestchg']['offiname']
 							. "\", with email address \"" . $data['Requestchg']['from'] . "\").";
-						$issent = $this->__sendemail($subject, $content, "SUPPORT@GlobalNetworkAds.com", "NOREPLY@GlobalNetworkAds.com");
+						$issent = $this->__sendemail($subject, $content, "SUPPORT@WeFeedPinoy.com", "NOREPLY@WeFeedPinoy.com");
 					} else if ($data['Requestchg']['type'] == 'upd') {//means an updating request
 						$subject = "Request For Updating Seller";
 						$content .= "\n\n(Request from team manager \"" . $data['Requestchg']['offiname']
 							. "\", with email address \"" . $data['Requestchg']['from'] . "\").";
-						$issent = $this->__sendemail($subject, $content, "SUPPORT@GlobalNetworkAds.com", "NOREPLY@GlobalNetworkAds.com");
+						$issent = $this->__sendemail($subject, $content, "SUPPORT@WeFeedPinoy.com", "NOREPLY@WeFeedPinoy.com");
 					}
 					
 					if ($issent) {
@@ -2072,10 +2072,10 @@ class AccountsController extends AppController {
 				/*
 				$mailto = ''
 					//. strtolower($r['ViewAgent']['officename']) . '_qa@cleanchattersinc.com';
-					. 'SUPPORT@GlobalNetworkAds.com';
+					. 'SUPPORT@WeFeedPinoy.com';
 				if ($this->__sendemail(
 						$subject, $content,
-						'SUPPORT@GlobalNetworkAds.com',
+						'SUPPORT@WeFeedPinoy.com',
 						$mailto
 					) != true) {
 					$fmsg = '(Failed to email out.<0>)';
@@ -2083,8 +2083,8 @@ class AccountsController extends AppController {
 				*/
 				if ($this->__sendemail(
 						$subject, $content,
-						'SUPPORT@GlobalNetworkAds.com',
-						'NOREPLY@GlobalNetworkAds.com'
+						'SUPPORT@WeFeedPinoy.com',
+						'NOREPLY@WeFeedPinoy.com'
 					) != true) {
 					$fmsg = '(Failed to email out.<1>)';
 				};

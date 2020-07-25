@@ -66,7 +66,7 @@ echo $scripts_for_layout;
 			'HEADER-sm.jpg', 
 			array(
 				'class' => 'img-fluid',
-				//'style' => 'height:180px;'
+				'style' => 'width:950px;'
 			)
 		);
 		?>
@@ -463,7 +463,7 @@ echo $scripts_for_layout;
 		<center>
 			Alexanderplatz Gontard  Strasse 11  Berlin Deutschland EU 
 			Copyright &copy; 2020 All Rights, Reserved.<BR/>
-			<a href="Https://www.GlobalNetworkAds.com">Https://www.GlobalNetworkAds.com</a> 
+			<a href="Https://www.WeFeedPinoy.com">Https://www.WeFeedPinoy.com</a> 
 			<br/>
 		</center>
 	</div>
@@ -524,9 +524,9 @@ echo $scripts_for_layout;
 				YOUR
 				<?php echo '"' . implode("\", \"", $excludedsites) . '"'; ?>
 				LINKS HAVE BEEN SUSPENDED, PLEASE CONTACT <a
-					href="mailto:SUPPORT@globalnetworkads.com"><font color="red">THE 
+					href="mailto:SUPPORT@WeFeedPinoy.com"><font color="red">THE 
 						GLOBALNETADVERTISING SUPPORT</font> </a> FOR MORE INFO.<br /> <a
-					href="mailto:SUPPORT@globalnetworkads.com"><font color="red">SUPPORT@GlobalNetworkAds.com</font>
+					href="mailto:SUPPORT@WeFeedPinoy.com"><font color="red">SUPPORT@WeFeedPinoy.com</font>
 				</a>
 			</p>
 			<div style="margin: 12px 2px 2px 2px; font-weight: bolder;">REASONS
