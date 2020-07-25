@@ -664,7 +664,7 @@ echo $scripts_for_layout;
 				}
 			});
 			function showGetPaid() {
-				jQuery("#divMarquee").load("/GNA/accounts/slide");
+				jQuery("#divMarquee").load("/WFP/accounts/slide");
 				//jQuery("#divGetPaidInvisibleLine").click();
 			}
 			jQuery("#divGetPaidInvisibleLine").click();
