@@ -63,7 +63,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			$this->Html->image(array('controller' => 'accounts', 'action' => 'phpcaptcha'),
 				array(
 					'class' => 'rounded-pill',
-					'style' => 'width:125px;margin:2px 0 3px 0;',
+					'style' => 'width:125px;height:36px;margin:2px 0 3px 6px;',
 					'id' => 'imgVcodes', 
 					'onclick' => 'javascript:__chgVcodes();'
 				)
