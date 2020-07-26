@@ -851,7 +851,7 @@ class AccountsController extends AppController {
 		} else {
 			$this->Bulletin->id = $this->request->data['Bulletin']['id'];
 			if ($this->Bulletin->saveField('info', $this->request->data['Bulletin']['info'])) {
-				//$this->Session->setFlash('ALERTS updated.');
+				$this->Session->setFlash('ALERTS updated.');
 				$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash("Something wrong, please contact your administrator.");
