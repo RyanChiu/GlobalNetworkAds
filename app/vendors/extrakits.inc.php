@@ -6,15 +6,8 @@
 	 * say CAMS2_CHS is for site with abbreviation "cams2".
 	 * THE CONSTANT VALUE is a set of numbers seperated by ",".
 	 */
-	define("CST_CHS", "21");
-	define("LCS_CHS", "22");
-	define("CMH_CHS", "23");
-	define("MCS_CHS", "24");
+	define("SPC_CHS", "1");
 	//define("HPC_CHS", "4,5");
-	//define("IINDS_CHS", "6,7");
-	//define("MAXI_CHS", "8,9,10,11");
-	//define("XCM_CHS", "12,13");
-	//define("IISM_CHS", "14,15");
 	/*
 	 * routines area
 	 */
@@ -314,7 +307,7 @@
 				3,
 				$logpath
 			);
-			echo "nothing posted";
+			echo "nothing posted.";
 		} else {
 			if(!empty($_POST)) {
 				error_log(
@@ -330,8 +323,9 @@
 					$logpath
 				);
 			}
+			echo "data recieved.";
 		}
-		//exit(); //for debugging
+		exit(); //for debugging
 		$err = "";
 		$s = "";
 		/*actually save the data into stats*/
