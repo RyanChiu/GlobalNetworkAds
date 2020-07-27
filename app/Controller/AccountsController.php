@@ -70,6 +70,13 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 0) {//means an administrator
 			switch ($this->request->params['action']) {
 				case 'addnews':
+				case 'regadmin':
+				case 'lstadmins':
+					if ($this->Auth->user("Account.id") != 1
+					&& $this->Auth->user("Account.id") != 2) {
+						$this->__accessDenied();
+					}
+					return;
 				case 'updalerts':
 					if ($this->Auth->user("Account.id") != 1
 						&& $this->Auth->user("Account.id") != 2) {
@@ -81,10 +88,12 @@ class AccountsController extends AppController {
 		}
 		if ($this->Auth->user('Account.role') == 1) {//means an office
 			switch ($this->request->params['action']) {
+				case 'regadmin':
 				case 'updadmin':
 				case 'addnews':
 				case 'updalerts':
 				case 'regcompany':
+				case 'lstadmins':
 				case 'lstnewmembers':
 				case 'lstcompanies':
 				case 'updtoolbox':
@@ -115,6 +124,7 @@ class AccountsController extends AppController {
 		}
 		if ($this->Auth->user('Account.role') == 2) {//means an agent
 			switch ($this->request->params['action']) {
+				case 'regadmin':
 				case 'updadmin':
 				case 'addnews':
 				case 'updalerts':
@@ -122,6 +132,7 @@ class AccountsController extends AppController {
 				case 'regagent':
 				case 'updcompany':
 				case 'rptpayouts':
+				case 'lstadmins':
 				case 'lstnewmembers':
 				case 'lstcompanies':
 				case 'lstagents':
@@ -881,18 +892,28 @@ class AccountsController extends AppController {
 		}
 	}
 	
-	function updadmin() {
+	function updadmin($id = null) {
 		$this->layout = 'defaultlayout';
+		
+		if (array_key_exists('id', $this->request->params['named'])){
+			$id = $this->request->params['named']['id'];
+		}
 		
 		//TEMPORERALY DISABLED
 		//$this->render("tempdisinfo");
 		
 		if (empty($this->request->data)) {
-			$this->Account->id = $this->Auth->user('Account.id');
+			if (in_array($this->Auth->user('Account.id'), array(1, 2))
+				&& $id != null) {
+				$this->Account->id = $id;
+				$this->Admin->id = $id;
+			} else {
+				$this->Account->id = $this->Auth->user('Account.id');
+				$this->Admin->id = $this->Auth->user('Account.id');
+			}
 			$account = $this->Account->read();
 			$account['Account']['password'] = $account['Account']['originalpwd'];
 			$this->request->data['Account'] = $account['Account'];
-			$this->Admin->id = $this->Auth->user('Account.id');
 			$admin = $this->Admin->read();
 			$this->request->data['Admin'] = $admin['Admin'];
 			$this->set('rs', $this->request->data);
@@ -927,10 +948,57 @@ class AccountsController extends AppController {
 				$this->Session->setFlash('Account changed.');
 				if ($this->Admin->save($this->request->data)) {
 					$this->Session->setFlash('Profile changed. Please remember your new password if changed.');
-					$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
+					if (in_array($this->Auth->user("Account.id"), array(1, 2))) {
+						$this->redirect(array('controller' => 'accounts', 'action' => 'lstadmins'));
+					} else {
+						$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
+					}
 				}
 			}
 			$this->Session->setFlash('Something wrong here, please contact your administrator.');
+		}
+	}
+	
+	function regadmin($id = null) {
+		$this->layout = 'defaultlayout';
+	
+		if (!empty($this->request->data)) {
+			/*validate the posted fields*/
+			$this->Account->set($this->request->data);
+			$this->Admin->set($this->request->data);
+			if (!$this->Account->validates() || !$this->Admin->validates()) {
+				$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
+				$this->Session->setFlash('Please notice the tips below the fields.');
+				return;
+			}
+	
+			/*make the value of field "regtime" to the current time*/
+			$this->request->data['Account']['regtime'] = date('Y-m-d H:i:s');
+	
+			/*actually save the posted data*/
+			$this->Account->create();
+			$this->request->data['Account']['username4m'] = __fillzero4m($this->request->data['Account']['username']);
+			if ($this->Account->save($this->request->data)) {//1stly, save the data into 'accounts'
+				$this->Session->setFlash('Only account added.Please contact your administrator immediately.');
+	
+				$this->request->data['Admin']['id'] = $this->Account->id;
+				$this->Admin->create();
+				if ($this->Admin->save($this->request->data)) {//2ndly, save the data into 'admins'
+	
+					/*redirect to some page*/
+					$this->Session->setFlash(
+							'Administrator: "'
+							. $this->request->data['Account']['username']
+							. '" added.'
+							);
+					$this->redirect(array('controller' => 'accounts', 'action' => 'lstadmins'));
+				} else {
+					$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
+					//should add some codes here to delete the record that saved in 'accounts' table before if failed
+				}
+			} else {
+				$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
+			}
 		}
 	}
 	
@@ -1610,6 +1678,21 @@ class AccountsController extends AppController {
 				$this->paginate('ViewNewMember')
 			);
 		}
+	}
+	
+	function lstadmins() {
+		$this->layout = 'defaultlayout';
+	
+		$this->paginate = array(
+			'ViewAdmin' => array(
+				'limit' => $this->__limit,
+				'order' => 'regtime desc'
+			)
+		);
+		$this->set('status', $this->Account->status);
+		$this->set('rs',
+			$this->paginate('ViewAdmin')
+		);
 	}
 		
 	function lstcompanies($id = null) {

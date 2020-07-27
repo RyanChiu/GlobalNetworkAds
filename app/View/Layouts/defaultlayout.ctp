@@ -225,14 +225,40 @@ echo $scripts_for_layout;
 				?>
 			</li>
 			-->
-			<li class="nav-item">
+			<li class="nav-item <?php echo in_array($userinfo['id'], [1, 2]) ? ' dropdown' : '';?>">
 				<?php
 				if ($role == 0) {//means an administrator
-					echo $this->Html->link('ME',
-						array('controller' => 'accounts', 'action' => 'updadmin'),
-						array('class' => 'nav-link text-white font-weight-bold', 'escape' => false),
-						false
-					);
+					if (in_array($userinfo['id'], [1, 2])) {
+				?>
+					<a class="nav-link text-white font-weight-bold dropdown-toggle" 
+						href="#" id="navbarDropdownProfile" 
+						role="button" data-toggle="dropdown" 
+						aria-haspopup="true" 
+						aria-expanded="false">
+					PROFILE
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+						<?php 
+						echo $this->Html->link('ME',
+							array('controller' => 'accounts', 'action' => 'updadmin'),
+							array('class' => 'dropdown-item', 'escape' => false),
+							false
+						);
+						echo $this->Html->link('OTHER ADMINS',
+							array('controller' => 'accounts', 'action' => 'lstadmins'),
+							array('class' => 'dropdown-item', 'escape' => false),
+							false
+						);
+						?>
+					</div>
+				<?php
+					} else {
+						echo $this->Html->link('ME',
+							array('controller' => 'accounts', 'action' => 'updadmin'),
+							array('class' => 'nav-link text-white font-weight-bold', 'escape' => false),
+							false
+						);
+					}
 				}
 				if ($role == 1) {//means an office
 					echo $this->Html->link('ME',
