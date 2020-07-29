@@ -551,10 +551,10 @@
 						$trs = mysql_query($tsql, $conn->dblink);
 						if ($trs === false) {
 							error_log(
-									"Error:failed to search transaction id '$trxid'\n",
-									3,
-									$logpath
-									);
+								"Error:failed to search transaction id '$trxid'\n",
+								3,
+								$logpath
+							);
 						} else {
 							if (mysql_num_rows($trs) > 0) {
 								$donothing = true;
@@ -572,10 +572,10 @@
 								//echo "$sql\n($i/$ch)[insert]\n"; $i++; if ($i >= count($chsfrombbr)) break; else continue; //for debug;
 					} else {
 						error_log(
-								"Do nothing, cause transaction id '$trxid' already exists.\n",
-								3,
-								$logpath
-								);
+							"Do nothing, cause transaction id '$trxid' already exists.\n",
+							3,
+							$logpath
+						);
 					}
 				}
 				$i++;

@@ -35,7 +35,7 @@ $userinfo = $this->Session->read('Auth.User.Account');
 		if ($price == 0) {
 			$price = "--";
 		} else {
-			$price = "₱" . $price;
+			$price = "$" . $price;
 		}
 		if ($earning != 1) {
 			$earning = "$" . $earning;

@@ -45,7 +45,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 		</td>
 	</tr>
 	<tr>
-		<td width="15%">Payout(₱):</td>
+		<td width="15%">Payout($):</td>
 		<td>
 		<div style="float:left">
 		<?php
