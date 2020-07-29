@@ -340,7 +340,6 @@
 			$ch = (isset($_GET['ch']) ? trim($_GET['ch']) : (isset($_POST['ch']) ? trim($_POST['ch']) : ''));
 			$ch = intval($ch);
 			$trxid = (isset($_GET['client_id']) ? trim($_GET['client_id']) : (isset($_POST['client_id']) ? trim($_POST['client_id']) : ''));
-			$trxid = intval($trxid);
 			$affid = (isset($_GET['affid']) ? trim($_GET['affid']) : (isset($_POST['affid']) ? trim($_POST['affid']) : ''));
 			if (!empty($trxid)) {
 				$type = 'sale';
@@ -385,7 +384,7 @@
 						/*
 						* check if $trxid already exists
 						*/
-						$tsql = sprintf("select * from stats where siteid = %d and transactionid = %d", $siteid, $trxid);
+						$tsql = sprintf("select * from stats where siteid = %d and transactionid = '%s'", $siteid, $trxid);
 						$trs = mysql_query($tsql, $conn->dblink);
 						if ($trs === false) {
 							error_log(
@@ -402,7 +401,7 @@
 
 					if (!$donothing) {
 						$sql = "insert into stats (agentid, companyid, raws, uniques, chargebacks, signups, frauds, sales_number, typeid, siteid, campaignid, trxtime, transactionid)"
-							. " values ($agid, $comid, $clicks, $uniques, 0, 0, 0, $sales, $typeid, $siteid, '$campid', '$trxtime', $trxid)";
+							. " values ($agid, $comid, $clicks, $uniques, 0, 0, 0, $sales, $typeid, $siteid, '$campid', '$trxtime', '$trxid')";
 			
 						if (mysql_query($sql, $conn->dblink) === false) {
 							$err = mysql_error();
@@ -496,7 +495,7 @@
 			}
 			echo "Data recieved.";
 		}
-		exit(); //for debugging
+		// exit(); //for debugging
 		$err = "";
 		$s = "";
 		/*actually save the data into stats*/
@@ -511,7 +510,6 @@
 			$ch = (isset($_GET['clickid']) ? trim($_GET['clickid']) : (isset($_POST['clickid']) ? trim($_POST['clickid']) : ''));
 			$ch = intval($ch);
 			$trxid = (isset($_GET['trxid']) ? trim($_GET['trxid']) : (isset($_POST['trxid']) ? trim($_POST['trxid']) : ''));
-			$trxid = intval($trxid);
 			$conn = new zmysqlConn();
 			$sql = "select a.*, g.companyid, b.id as 'typeid'
 			from agent_site_mappings a, sites s, accounts n, types b, agents g, companies m
@@ -549,11 +547,11 @@
 						/*
 							* check if $trxid already exists
 							*/
-						$tsql = sprintf("select * from stats where siteid = %d and transactionid = %d", $siteid, $trxid);
+						$tsql = sprintf("select * from stats where siteid = %d and transactionid = '%s'", $siteid, $trxid);
 						$trs = mysql_query($tsql, $conn->dblink);
 						if ($trs === false) {
 							error_log(
-									"error:failed to search transactionid '$trxid'\n",
+									"Error:failed to search transaction id '$trxid'\n",
 									3,
 									$logpath
 									);
@@ -566,7 +564,7 @@
 	
 					if (!$donothing) {
 						$sql = "insert into stats (agentid, companyid, raws, uniques, chargebacks, signups, frauds, sales_number, typeid, siteid, campaignid, trxtime, transactionid)"
-								. " values ($agid, $comid, $clicks, $uniques, 0, 0, 0, $sales, $typeid, $siteid, '$campid', '$trxtime', $trxid)";
+								. " values ($agid, $comid, $clicks, $uniques, 0, 0, 0, $sales, $typeid, $siteid, '$campid', '$trxtime', '$trxid')";
 									
 								if (mysql_query($sql, $conn->dblink) === false) {
 									$err = mysql_error();
@@ -574,15 +572,13 @@
 								//echo "$sql\n($i/$ch)[insert]\n"; $i++; if ($i >= count($chsfrombbr)) break; else continue; //for debug;
 					} else {
 						error_log(
-								"do nothing, cause transactionid '$trxid' already exists.\n",
+								"Do nothing, cause transaction id '$trxid' already exists.\n",
 								3,
 								$logpath
 								);
-						//echo "do nothing:($i/$ch)\n"; $i++; if ($i >= count($chsfrombbr)) break; else continue; //for debug;
 					}
 				}
 				$i++;
-				if ($i >= count($chsfrombbr)) break;
 			}
 			if ($i == 0) {
 				error_log("no such an agent '$agent'.\n", 3, $logpath);
@@ -592,7 +588,7 @@
 					error_log("ok.\n", 3, $logpath);
 					echo "OK.";
 				} else {
-					error_log("no such a type.\n", 3, $logpath);
+					error_log("no such a type (with id $ch).\n", 3, $logpath);
 					echo "No such a type.\n";
 				}
 			}
