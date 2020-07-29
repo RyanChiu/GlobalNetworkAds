@@ -144,8 +144,8 @@ if (!empty($rs)) {
 				break;
 		}
 		?>	
-		<th><?php echo $this->ExPaginator->sort('ViewTStats.raws', 'Raw', array('class' => 'text-reset')); ?></th>
-		<th><?php echo $this->ExPaginator->sort('ViewTStats.uniques', 'Uniques', array('class' => 'text-reset')); ?></th>
+		<th class="naClassHide"><?php echo $this->ExPaginator->sort('ViewTStats.raws', 'Raw', array('class' => 'text-reset')); ?></th>
+		<th class="naClassHide"><?php echo $this->ExPaginator->sort('ViewTStats.uniques', 'Uniques', array('class' => 'text-reset')); ?></th>
 		<th class="naClassHide">
 		<?php 
 			echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*', array('class' => 'text-reset')); 
@@ -364,7 +364,7 @@ if (!empty($rs)) {
 		<?php
 		if ($_show_pay_) {
 		?>
-		<td><?php echo '₱' . $r[0]['payouts']; ?></td>
+		<td><?php echo '$' . $r[0]['payouts']; ?></td>
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
@@ -428,7 +428,7 @@ if (!empty($rs)) {
 		<?php
 		if ($_show_pay_) {
 		?>
-		<td class="totals"><?php echo '₱' . sprintf('%.2f', $pagetotals['payouts']); ?></td>
+		<td class="totals"><?php echo '$' . sprintf('%.2f', $pagetotals['payouts']); ?></td>
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
@@ -488,7 +488,7 @@ if (!empty($rs)) {
 		<?php
 		if ($_show_pay_) {
 		?>
-		<td class="totals"><?php echo '₱' . sprintf('%.2f', $totals['payouts']); ?></td>
+		<td class="totals"><?php echo '$' . sprintf('%.2f', $totals['payouts']); ?></td>
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
