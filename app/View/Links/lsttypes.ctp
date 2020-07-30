@@ -4,7 +4,7 @@ $userinfo = $this->Session->read('Auth.User.Account');
 
 <table class="table table-sm table-borderless font-weight-bold p-0 mb-1">
 	<tr><td>
-	Host Name:<?php if (!empty($rs)) echo $rs[0]['ViewType']['hostname']; ?>
+	Host Name : <?php if (!empty($rs)) echo $rs[0]['b']['hostname']; //debug($rs);?>
 	</td></tr>
 </table>
 
