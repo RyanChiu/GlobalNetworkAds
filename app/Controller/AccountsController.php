@@ -2342,7 +2342,7 @@ class AccountsController extends AppController {
 			if (!empty($siteabbr)) {
 				$postback = Router::url('/', true) . ("/api/$siteabbr.php");
 				$postback = strtolower($postback);
-				request_by_curl(
+				send_post(
 					$postback, 
 					"stamp=$clicktime&type=click&agent=$campaignid&clickid=$typeid" // . "&postto=" . $postback //for debug
 				);

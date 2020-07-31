@@ -633,4 +633,24 @@
 	
 		return $data;
 	}
+	
+	/**
+	 * @param string $url 
+	 * @param $post_string = "app=request&version=beta";
+	 * @return string
+	 */
+	function send_post($url, $post_string) {
+		$options = array(
+				'http' => array(
+						'method' => 'POST',
+						'header' => 'Content-type:application/x-www-form-urlencoded',
+						'content' => $post_string,
+						'timeout' => 15 * 60 // timeout in second
+				)
+		);
+		$context = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+	
+		return $result;
+	}
 ?>
