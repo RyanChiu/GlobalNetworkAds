@@ -6,7 +6,7 @@
 	 * say CAMS2_CHS is for site with abbreviation "cams2".
 	 * THE CONSTANT VALUE is a set of numbers seperated by ",".
 	 */
-	define("SPC_CHS", "1");
+	//define("SPC_CHS", "1");
 	//define("HPC_CHS", "4,5");
 	/*
 	 * routines area
@@ -606,12 +606,31 @@
 			$time = str_replace("-", "", $time);
 			$time = str_replace(":", "", $time);
 			error_log(
-					$from . "\n" . $err . $ending,
-					3,
-					"./logs/err_" . $time . "_" . $bname . ".log"
-					);
+				$from . "\n" . $err . $ending,
+				3,
+				"./logs/err_" . $time . "_" . $bname . ".log"
+			);
 		}
 	
 		if (!empty($s)) error_log($s . "\n", 3, $logpath);
+	}
+	
+	/**
+	 * Using curl to post
+	 * How to use:
+	 * $post_string = "app=request&version=beta";
+	 * request_by_curl('https://www.jb51.net/restServer.php', $post_string);
+	 */
+	function request_by_curl($remote_server, $post_string) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $remote_server);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		//curl_setopt($ch, CURLOPT_USERAGENT, "jb51.net's CURL Example beta");
+		$data = curl_exec($ch);
+		curl_close($ch);
+		error_log($data, 3, "./logs/err_request_by_curl.log"); // for debug
+	
+		return $data;
 	}
 ?>

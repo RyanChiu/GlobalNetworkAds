@@ -2321,7 +2321,7 @@ class AccountsController extends AppController {
 		$this->set('rs', $this->paginate('ViewChatLog'));
 	}
 		
-	function __go($siteid, $typeid, $url, $referer, $agentid, $clicktime, $linkid = null) {
+	function __go($siteid, $typeid, $url, $referer, $agentid, $clicktime, $campaignid = null, $linkid = null, $siteabbr = null) {
 		//if (__isblocked(__getclientip())) {
 		if (false) {
 			$this->Session->setFlash('Sorry, you\'re not allowed to check the link.');
@@ -2338,6 +2338,15 @@ class AccountsController extends AppController {
 			$this->request->data['Clickout']['url'] = $url;
 			$this->request->data['Clickout']['referer'] = $referer;
 			$this->Clickout->save($this->request->data);
+			/*send click track to the post back*/
+			if (!empty($siteabbr)) {
+				$postback = Router::url('/', true) . ("/api/$siteabbr.php");
+				$postback = strtolower($postback);
+				request_by_curl(
+					$postback, 
+					"stamp=$clicktime&type=click&agent=$campaignid&clickid=$typeid" // . "&postto=" . $postback //for debug
+				);
+			}
 			/*and redirect to the real url*/
 			$this->redirect($url);
 		}
@@ -2405,7 +2414,7 @@ class AccountsController extends AppController {
 		}
 		*/
 		
-		$this->__go($siteid, -1, '', $this->request->data['Link']['url'], '', $agentid, date('Y-m-d H:i:s'), $linkid);
+		$this->__go($siteid, -1, '', $this->request->data['Link']['url'], '', $agentid, date('Y-m-d H:i:s'), null, $linkid);
 	}
 
 	function go() {
@@ -2429,6 +2438,7 @@ class AccountsController extends AppController {
 		$typeid = $this->passedArgs[1];
 		$agentusername = trim($this->passedArgs[2]);
 		
+		$siteabbr = '';
 		$r = $this->Site->find('first',
 			array(
 				'conditions' => array(
@@ -2437,9 +2447,10 @@ class AccountsController extends AppController {
 			)
 		);
 		if (empty($r)) {
-			$this->Session->setFlash("No such site!");
+			$this->Session->setFlash("No such a site!");
 			return;
 		} else {
+			$siteabbr = $r['Site']['abbr'];
 			if ($r['Site']['status'] == 0) {
 				$this->Session->setFlash("The site has been suspended for now, contact you aministrator for further informations, please.");
 				return;
@@ -2524,7 +2535,7 @@ class AccountsController extends AppController {
 		$url = str_replace($searchstr, $campaignid, $url);
 		
 		//$this->Session->setFlash($url);//for debug
-		$this->__go($siteid, $typeid, $url, $phost, $agentid, date('Y-m-d H:i:s'));
+		$this->__go($siteid, $typeid, $url, $phost, $agentid, date('Y-m-d H:i:s'), $campaignid, null, $siteabbr);
 	}
 	
 	function slide() {
