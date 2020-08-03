@@ -14,7 +14,7 @@ $curmenuidx = 0;
 <title><?php echo $title_for_layout; ?></title>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 <?php
 echo $this->Html->meta('icon', $this->Html->url('/../favicon.ico'), array('type' => 'icon'));
 
