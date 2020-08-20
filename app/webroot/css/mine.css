@@ -35,3 +35,16 @@
 	border-top: 1px solid #000 !important;
 	border-bottom: 1px solid #000 !important;
 }
+/*
+thead tr th a {
+	color:black;
+}
+
+thead tr th a.desc {
+	color:red;
+}
+
+thead tr th a.asc {
+	color:green;
+}
+*/
