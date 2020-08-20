@@ -7,7 +7,7 @@ echo $this->Html->scriptBlock(
 
 <?php
 $userinfo = $this->Session->read('Auth.User.Account');
-//echo str_replace("\n", "<br>", print_r($rs[0], true));
+//debug($rs);//echo str_replace("\n", "<br>", print_r($rs[0], true));
 ?>
 <?php
 //echo $this->element('timezoneblock');
@@ -225,7 +225,7 @@ foreach ($rs as $r):
 <tr <?php echo $i % 2 == 0 ? '' : 'class="odd"'; ?>>
 	<td><?php echo $r['ViewClickout']['officename']; ?></td>
 	<td><?php echo $r['ViewClickout']['username']; ?></td>
-	<td><?php echo $r['ViewClickout']['sitename']; ?></td>
+	<td><?php echo array_key_exists('e', $r) ? $r['e']['sitename'] : $r['ViewClickout']['sitename']; ?></td>
 	<td><?php echo $r['ViewClickout']['typename']; ?></td>
 	<!--<td>
 	<?php
