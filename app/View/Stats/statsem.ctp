@@ -145,7 +145,7 @@ if (!empty($rs)) {
 		}
 		?>	
 		<th><?php echo $this->ExPaginator->sort('ViewTStats.raws', 'Raw', array('class' => 'text-reset')); ?></th>
-		<th class="naClassHide"><?php echo $this->ExPaginator->sort('ViewTStats.uniques', 'Uniques', array('class' => 'text-reset')); ?></th>
+		<th><?php echo $this->ExPaginator->sort('ViewTStats.uniques', 'Uniques', array('class' => 'text-reset')); ?></th>
 		<th class="naClassHide">
 		<?php 
 			echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*', array('class' => 'text-reset')); 

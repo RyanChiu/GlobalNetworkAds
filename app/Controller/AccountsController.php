@@ -2328,6 +2328,34 @@ class AccountsController extends AppController {
 			$this->render('/accounts/go');
 			return;
 		} else {
+			/*send click track to the post back*/
+			if (!empty($siteabbr) && in_array($siteabbr, ['spc'])) {
+				/**
+				 * if the click of this agent with this type from this ip within the same day is already there,
+				 * then it's not a unique.
+				 */
+				$conn = new zmysqlConn();
+				$sql = sprintf(
+					"select * from clickouts "
+						. "where agentid = %d and typeid = %d and fromip = '%s' and convert(clicktime, date) = '%s'",
+					$agentid, $typeid, __getclientip(), date("Y-m-d")
+				);
+				$rs = mysql_query($sql, $conn->dblink);
+				$unique = 'Y';
+				$num_rows = ($rs !== false ? mysql_num_rows($rs) : -1);
+				if ($num_rows > 0) {
+					$unique = 'N';
+				}
+				
+				$postback = Router::url('/', true) . ("/api/$siteabbr.php");
+				$postback = strtolower($postback);
+				send_post(
+					$postback,
+					"stamp=$clicktime&type=click&unique=$unique&agent=$campaignid&clickid=$typeid" 
+					// . "&debug=$sql;$num_rows;" . "&postto=" . $postback //for debug
+				);
+			}
+			
 			/*log this click*/
 			$this->request->data['Clickout']['linkid'] = $linkid;
 			$this->request->data['Clickout']['agentid'] = $agentid;
@@ -2338,15 +2366,7 @@ class AccountsController extends AppController {
 			$this->request->data['Clickout']['url'] = $url;
 			$this->request->data['Clickout']['referer'] = $referer;
 			$this->Clickout->save($this->request->data);
-			/*send click track to the post back*/
-			if (!empty($siteabbr)) {
-				$postback = Router::url('/', true) . ("/api/$siteabbr.php");
-				$postback = strtolower($postback);
-				send_post(
-					$postback, 
-					"stamp=$clicktime&type=click&agent=$campaignid&clickid=$typeid" // . "&postto=" . $postback //for debug
-				);
-			}
+			
 			/*and redirect to the real url*/
 			$this->redirect($url);
 		}
