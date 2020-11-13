@@ -72,7 +72,7 @@ echo $scripts_for_layout;
 		?>
 		</div>
 	</div>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">		
+	<nav class="navbar navbar-expand navbar-dark bg-dark flex-nowrap flex-row" role="navigation">
 		<?php
 		echo $this->Html->link('<i class="icon-home"></i>' . 'HOME',
 			array('controller' => 'accounts', 'action' => 'index'),
@@ -80,6 +80,7 @@ echo $scripts_for_layout;
 			false
 		);
 		?>
+		<!--
 		<button class="navbar-toggler" 
 			type="button" 
 			data-toggle="collapse" 
@@ -90,6 +91,8 @@ echo $scripts_for_layout;
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		-->
+		<div>
 			<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<?php
